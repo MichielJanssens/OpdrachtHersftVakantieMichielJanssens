@@ -1,8 +1,15 @@
-﻿@* BookListViewModel
+﻿@* BookDetailViewModel
 
 *@
-    ViewData["Title"] = "Overzicht boeken";
 @{
 }
 
-<h1>Hello Lisa</h1>
+<h1>Book Detail</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            De titel is @Model.Title , de auteur is @Model.Author en de isbn is @Model.ISBN
+        </div>
+    </div>
+</div>

@@ -3,29 +3,25 @@
 *@
 @{
 }
-
-<div class="row">
-    <div class="col-md-12">
-        <table class="table">
-            <thead>
-                <tr>
-                    <td>CreatedOn</td>
-                    <td>Title</td>
-                    <td>Author</td>
-                    <td>ISBN</td>
-                    <td>Genre</td>
-                </tr>
-            </thead>
-            @foreach (var book in Model.Books)
+<h1>Boekenlijst</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Title</td>
+            <td>Author</td>
+            <td>Genre</td>
+            <td>CreatedOn</td>
+            <td>ISBN</td>
+        </tr>
+    </thead>
+    @foreach (KeyValuePair<int, BookDetailViewModel> book in Model.Books)
             {
-                <tr>
-                    <td>@book.CreatedOn</td>
-                    <td>@book.Title</td>
-                    <td>@book.Author</td>
-                    <td>@book.ISBN</td>
-                    <td>@book.Genre</td>
-                </tr>
-            }
-        </table>
-    </div>
-</div>
+        <tr>
+            <td><a href="books/@book.Key">@book.Value.Title</a></td>
+            <td>@book.Value.Author</td>
+            <td>@book.Value.Genre</td>
+            <td>@book.Value.CreatedOn.ToShortDateString()</td>
+            <td>@book.Value.ISBN</td>
+        </tr>
+    }
+</table>
