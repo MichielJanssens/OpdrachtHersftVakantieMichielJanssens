@@ -1,0 +1,31 @@
+﻿@* BookListViewModel
+
+*@
+@{
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>CreatedOn</td>
+                    <td>Title</td>
+                    <td>Author</td>
+                    <td>ISBN</td>
+                    <td>Genre</td>
+                </tr>
+            </thead>
+            @foreach (var book in Model.Books)
+            {
+                <tr>
+                    <td>@book.CreatedOn</td>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>@book.ISBN</td>
+                    <td>@book.Genre</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
