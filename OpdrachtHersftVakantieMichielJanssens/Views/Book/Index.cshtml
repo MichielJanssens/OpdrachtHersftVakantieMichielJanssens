@@ -1,6 +1,5 @@
-﻿@* BookListViewModel
+﻿@model BookListViewModel
 
-*@
 @{
 }
 <h1>Boekenlijst</h1>
@@ -14,14 +13,16 @@
             <td>ISBN</td>
         </tr>
     </thead>
-    @foreach (KeyValuePair<int, BookDetailViewModel> book in Model.Books)
+    @foreach (var book in Model.Books)
             {
         <tr>
-            <td><a href="books/@book.Key">@book.Value.Title</a></td>
-            <td>@book.Value.Author</td>
-            <td>@book.Value.Genre</td>
-            <td>@book.Value.CreatedOn.ToShortDateString()</td>
-            <td>@book.Value.ISBN</td>
+            <td>
+                <a asp-controller="Book" asp-action="Detail" asp-route-id="1">@book.Title</a>
+            </td>
+            <td>@book.Author</td>
+            <td>@book.CreatedOn.ToLongDateString()</td>
+            <td>@book.ISBN</td>
+            <td>@book.Genre</td>
         </tr>
     }
 </table>

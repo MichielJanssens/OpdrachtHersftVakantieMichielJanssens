@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using OpdrachtHersftVakantieMichielJanssens.Data;
+using OpdrachtHersftVakantieMichielJanssens.Entities;
 using OpdrachtHersftVakantieMichielJanssens.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace OpdrachtHersftVakantieMichielJanssens.Controllers
 {
@@ -24,6 +28,32 @@ namespace OpdrachtHersftVakantieMichielJanssens.Controllers
 
         [HttpGet("/books/{id}")]
         public IActionResult Detail([FromRoute] int id)
+        {
+            var model = new BookListViewModel().Books[id];
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        [HttpGet("/books/{id}")]
+        public IActionResult Edit([FromRoute] int id)
+        {
+            var model = new BookListViewModel().Books[id];
+
+            if (model == null)
+            {
+                return NotFound();
+            }
+
+            return View(model);
+        }
+
+        [HttpGet("/books/delete/{id}")]
+        public IActionResult Delete([FromRoute] int id)
         {
             var model = new BookListViewModel().Books[id];
 
